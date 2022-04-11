@@ -66,13 +66,15 @@ public class Person {
 
     @Override
     public String toString() {
-        if (surname != null) {
+        if (this.age > 5) {
             return name + " " + surname;
         } else return name;
     }
 
     public PersonBuilder newChildBuilder() {
-        return new PersonBuilder().setName(name);
+        return new PersonBuilder()
+                .setName(name)
+                .setSurname(this.surname);
     }
 
     public static class PersonBuilder {
@@ -95,8 +97,11 @@ public class Person {
         }
 
         public PersonBuilder setAge(int age) {
+            if(age < 0 ) {
+                throw new IllegalArgumentException("Возраст не может быть меньше ноля.");
+            } else {
             this.age = age;
-            return this;
+            return this;}
         }
 
         public PersonBuilder setCity(String city) {
@@ -115,7 +120,10 @@ public class Person {
         }
 
         public Person build() {
-            return new Person(name, surname, age, city, isAgeKnown, isCityKnown);
+            if(this.name.equals("") || this.surname.equals("")) {
+                throw new IllegalStateException("Имя и фамилия не могут быть пустыми");
+            } else
+            {return new Person(name, surname, age, city, isAgeKnown, isCityKnown);}
         }
     }
 }
