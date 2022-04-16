@@ -11,6 +11,7 @@ public class Main {
             Person son = mom.newChildBuilder()
                     .setName("Антошка")
                     .build();
+
             System.out.println("У " + mom + " есть сын, " + son);
 
         } catch (IllegalArgumentException e) {
@@ -18,18 +19,5 @@ public class Main {
         } catch (IllegalStateException e) {
             e.printStackTrace();
         }
-//        try {
-//            // Не хватает обязательных полей
-//            new Person.PersonBuilder().build();
-//        } catch (IllegalStateException e) {
-//            e.printStackTrace();
-//        }
-
-//        try {
-//            // Возраст недопустимый
-//            new Person.PersonBuilder().setAge(-100).build();
-//        } catch (IllegalArgumentException e) {
-//            e.printStackTrace();
-//        }
     }
 }

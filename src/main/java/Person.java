@@ -97,11 +97,12 @@ public class Person {
         }
 
         public PersonBuilder setAge(int age) {
-            if(age < 0 ) {
-                throw new IllegalArgumentException("Возраст не может быть меньше ноля.");
+            if (age < 0) {
+                throw new IllegalArgumentException("Возраст не может быть отрицательным.");
             } else {
-            this.age = age;
-            return this;}
+                this.age = age;
+                return this;
+            }
         }
 
         public PersonBuilder setCity(String city) {
@@ -120,10 +121,11 @@ public class Person {
         }
 
         public Person build() {
-            if(this.name.equals("") || this.surname.equals("")) {
+            if (this.name.equals("") || this.surname.equals("")) {
                 throw new IllegalStateException("Имя и фамилия не могут быть пустыми");
-            } else
-            {return new Person(name, surname, age, city, isAgeKnown, isCityKnown);}
+            } else {
+                return new Person(name, surname, age, city, isAgeKnown, isCityKnown);
+            }
         }
     }
 }
